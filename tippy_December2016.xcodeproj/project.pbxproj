@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5125A7F61E6D0FDD00BEF228 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5125A7F51E6D0FDD00BEF228 /* SettingsViewController.swift */; };
 		512A7AD71E6A4C1F005BAD92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512A7AD61E6A4C1F005BAD92 /* AppDelegate.swift */; };
 		512A7AD91E6A4C1F005BAD92 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512A7AD81E6A4C1F005BAD92 /* ViewController.swift */; };
 		512A7ADC1E6A4C1F005BAD92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 512A7ADA1E6A4C1F005BAD92 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5125A7F51E6D0FDD00BEF228 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		512A7AD31E6A4C1F005BAD92 /* tippy_December2016.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tippy_December2016.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		512A7AD61E6A4C1F005BAD92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		512A7AD81E6A4C1F005BAD92 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 				512A7ADD1E6A4C1F005BAD92 /* Assets.xcassets */,
 				512A7ADF1E6A4C1F005BAD92 /* LaunchScreen.storyboard */,
 				512A7AE21E6A4C1F005BAD92 /* Info.plist */,
+				5125A7F51E6D0FDD00BEF228 /* SettingsViewController.swift */,
 			);
 			path = tippy_December2016;
 			sourceTree = "<group>";
@@ -139,6 +142,7 @@
 			files = (
 				512A7AD91E6A4C1F005BAD92 /* ViewController.swift in Sources */,
 				512A7AD71E6A4C1F005BAD92 /* AppDelegate.swift in Sources */,
+				5125A7F61E6D0FDD00BEF228 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +304,7 @@
 				512A7AE71E6A4C1F005BAD92 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
