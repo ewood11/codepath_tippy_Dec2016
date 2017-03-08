@@ -21,7 +21,6 @@ class SettingsViewController:
     @IBOutlet weak var picker_Sel_Label: UILabel!
     
     
-    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -73,12 +72,22 @@ class SettingsViewController:
         tip_selected =
             picker_Sel_Label.text!
     }
+  
+    override func unwind(for unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController)
+    {
+        print("SettingsVC unwind called:saved tip=", tip_selected)
+    }
+    
+      
+    override func canPerformUnwindSegueAction(_ action: Selector, from fromViewController: UIViewController, withSender sender: Any) -> Bool {
+        print("SettingsVC canPerformUnwindSequeAction called:saved tip=", tip_selected)
+        return true
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
     /*
     // MARK: - Navigation
@@ -89,5 +98,5 @@ class SettingsViewController:
         // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

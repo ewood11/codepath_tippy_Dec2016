@@ -17,16 +17,14 @@ The following **required** functionality is completed:
 The following **optional** features are implemented:
 
 
-
 The following **additional** features are implemented:
-
 
 
 ## Video Walkthrough 
 
 Here's a walkthrough of implemented user stories:
 
-<img src=‘./tippy_Dec2016_170306L.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src=‘./tippy_Dec2016_170307B.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 

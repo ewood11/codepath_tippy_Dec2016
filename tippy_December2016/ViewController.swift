@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var Saved_Default_tip: String?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,10 +37,18 @@ class ViewController: UIViewController {
             tipControl.setEnabled(true, forSegmentAt: 6)
         default: print ("Error in ViewController Segmented Control locEyeCatch:1010")
         }
+        printLog(log: "From main viewDidLoad" as AnyObject?)
     }
 
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool)
+    {
+        printLog(log: "From main viewWillAppear" as AnyObject)
         
+          let userDefaults = Foundation.UserDefaults
+          var tip_from_Settings = userDefaults.standard.value(forKey: "tipDefault")
+                
+          printLog(log: tip_from_Settings as AnyObject)
+          SavedTipDef_Label.text = tip_from_Settings as! String?
     }
     
     override func didReceiveMemoryWarning() {
@@ -82,5 +91,15 @@ class ViewController: UIViewController {
     @IBAction func onTap(_ sender: Any) {
          view.endEditing(true)
     }
+    
+    func printLog(log: AnyObject?) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
+        print(formatter.string(from: NSDate() as Date))
+        if log == nil
+        { print("nil") } else
+        { print(log!)   }
+    }
+    
 }
 
