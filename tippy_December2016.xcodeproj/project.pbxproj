@@ -13,6 +13,7 @@
 		512A7ADC1E6A4C1F005BAD92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 512A7ADA1E6A4C1F005BAD92 /* Main.storyboard */; };
 		512A7ADE1E6A4C1F005BAD92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 512A7ADD1E6A4C1F005BAD92 /* Assets.xcassets */; };
 		512A7AE11E6A4C1F005BAD92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 512A7ADF1E6A4C1F005BAD92 /* LaunchScreen.storyboard */; };
+		516E71711E728256003685CC /* serene_river_170309.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 516E71701E728256003685CC /* serene_river_170309.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		512A7ADD1E6A4C1F005BAD92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		512A7AE01E6A4C1F005BAD92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		512A7AE21E6A4C1F005BAD92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		516E71701E728256003685CC /* serene_river_170309.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = serene_river_170309.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				512A7ADD1E6A4C1F005BAD92 /* Assets.xcassets */,
 				512A7ADF1E6A4C1F005BAD92 /* LaunchScreen.storyboard */,
 				512A7AE21E6A4C1F005BAD92 /* Info.plist */,
+				516E71701E728256003685CC /* serene_river_170309.jpg */,
 				5125A7F51E6D0FDD00BEF228 /* SettingsViewController.swift */,
 			);
 			path = tippy_December2016;
@@ -129,6 +132,7 @@
 			files = (
 				512A7AE11E6A4C1F005BAD92 /* LaunchScreen.storyboard in Resources */,
 				512A7ADE1E6A4C1F005BAD92 /* Assets.xcassets in Resources */,
+				516E71711E728256003685CC /* serene_river_170309.jpg in Resources */,
 				512A7ADC1E6A4C1F005BAD92 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
