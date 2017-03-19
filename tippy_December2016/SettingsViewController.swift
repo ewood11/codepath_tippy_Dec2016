@@ -9,9 +9,11 @@
 import UIKit
 
 class SettingsViewController:
-          UIViewController,UIPickerViewDataSource, UIPickerViewDelegate
-//    , passLocaleDataDelegate
+          UIViewController,UIPickerViewDataSource, UIPickerViewDelegate,
+    passSettingsThemeDelegate
 {
+    let themesVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ThirdVC") as! ThemesController
+    
     @IBOutlet weak var myLabel: UILabel!
     @IBOutlet weak var picker1: UIPickerView!
      var picker_percent: [String] = [String]()
@@ -34,15 +36,21 @@ class SettingsViewController:
     @IBOutlet weak var picker2: UIPickerView!
     @IBOutlet weak var locale_Sel_Label: UILabel!
     
+    @IBOutlet weak var Tip_Hdr_Label: UILabel!
+    @IBOutlet weak var Locale_Hdr_Label: UILabel!
+    
     var  picker2_data: [String] = ["en_UK", "en_US", "es_US", "fr_FR", "it_IT", "zh_Hans_CN", "zh_Hans_HK"]
 
- //   let firstVC = UIStoryboard(name: "Tip Calculator",
- //   bundle:nil).instantiateViewController(withIdentifier: "ViewController") as! ViewController
-    
+    var themes2set_B: Bool = false
+
+    @IBAction func To_Themes(_ sender: UIButton) {
+        self.present(themesVC, animated: true, completion: nil)
+    }
+
     override func viewDidLoad()
     {
         super.viewDidLoad()
-//      firstVC.delegate = self
+        themesVC.delegate = self
         picker_percent =
             [ "10",
               "12.5",
@@ -56,12 +64,6 @@ class SettingsViewController:
         picker_Sel_Label.text = ""
         if (userDefaults.value(forKey: UD_tipPCent) != nil)
         {
-//          let formatter2 = DateFormatter.init()
-//          print("SVC_Debug M_020 [",
-//               formatter2.string(from: 
-//          userDefaults.value(forKey: UD_tipPCent)
-//          as! Date), "]")
-            
             let savedTPC = userDefaults.value(forKey: UD_tipPCent)
             print("SVC_Debug_015 [", savedTPC as Any, "]")
             if (savedTPC is Date) { } else
@@ -84,10 +86,28 @@ class SettingsViewController:
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-//      self.view.backgroundColor = UIColor.cyan
-//      self.view.backgroundColor = UIColor.lightGray
-//      picker1.backgroundColor = UIColor.white
-//  picker_Sel_Label.backgroundColor = UIColor.white
+        if (themes2set_B) {
+           self.view.backgroundColor = UIColor.lightGray
+            
+           picker1.backgroundColor = UIColor.lightGray
+           Tip_Hdr_Label.textColor =
+              UIColor.init(red: 255.0, green: 0.0, blue: 230.0, alpha: 1)
+           Locale_Hdr_Label.textColor =
+              UIColor.init(red: 255.0, green: 0.0, blue: 230.0, alpha: 1)
+           picker_Sel_Label.textColor =
+              UIColor.init(red: 255.0, green: 0.0, blue: 230.0, alpha: 1)
+           locale_Sel_Label.textColor =
+              UIColor.init(red: 255.0, green: 0.0, blue: 230.0,  alpha: 1)
+        } else {
+           self.view.backgroundColor = UIColor.white
+           picker1.backgroundColor = self.view.backgroundColor
+           Tip_Hdr_Label.textColor    = UIColor.black
+           Locale_Hdr_Label.textColor = UIColor.black
+           picker_Sel_Label.textColor = UIColor.black
+           locale_Sel_Label.textColor = UIColor.black
+        }
+        
+        
     }
     
     @IBAction func default_Save_Label(_ sender: Any)
@@ -198,22 +218,16 @@ class SettingsViewController:
     	        return 200
     	    }
 
-//    func passlocateData(locale: [String])
-//    {
-//    print("VC1_=>_VC2_passLocateData=[", locale, "]" )
-//    }
+    func passSettingsTheme(lightDark: Bool)
+    {
+       
+        themes2set_B = lightDark
+        print("VC3_=>_VC2_passSettingsThemeData=[", lightDark, "]" )
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
 // Dispose of any resources that can be recreated.
     }
     
-    /*
-    // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-}
+  }

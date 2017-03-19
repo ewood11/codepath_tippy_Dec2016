@@ -3,7 +3,7 @@
 //  tippy_December2016
 //
 //  Created by jpwood on 3/3/17.
-//  Copyright © 2017 jpwood. All rights reserved.
+//  Copyright © 2017 ewood. All rights reserved.
 //
 
 import UIKit

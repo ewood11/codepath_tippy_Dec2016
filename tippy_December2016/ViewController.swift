@@ -10,9 +10,6 @@ import UIKit
 
 class ViewController: UIViewController
 {
-    
-//    var localeDataDelegate: passLocaleDataDelegate?
-    
     let locale_identifiers = ["en_UK", "en_US", "es_US", "fr_FR", "it_IT", "zh_Hans_CN", "zh_Hans_HK"]
     
     var locale_dict: [String: Locale ] = ["en_UK": Locale.current, "en_US": Locale.current, "es_US": Locale.current, "fr_FR": Locale.current, "it_IT": Locale.current, "zh_Hans_CN": Locale.current, "zh_Hans_HK": Locale.current ]
@@ -30,8 +27,7 @@ class ViewController: UIViewController
     
     @IBOutlet weak var tipControl: UISegmentedControl!
     @IBOutlet weak var imageView1: UIImageView!
-
-    @IBOutlet weak var billField: UITextField!
+    @IBOutlet weak var billField1: UITextField!
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var SavedTipDef_Label: UILabel!
@@ -55,7 +51,17 @@ class ViewController: UIViewController
            let currencySymbol = locale.currencySymbol
            symbols_dict[e] = currencySymbol
            print ("VC_VDL01:locale=[", e, "] currency_symbol=", currencySymbol as Any)
+
         }
+        
+        let bf_fr: Bool = billField1.becomeFirstResponder(
+        )
+        if (bf_fr) {
+            print("mainVC22: BF 1 resp ok")
+        } else {
+            print("mainVC24: BF 1 resp nogo")
+        }
+        
 //      self.onTap(billField)
     }
     
@@ -83,7 +89,7 @@ class ViewController: UIViewController
              } else  {
                   print("M_VWAppear_24 yes expired")
                   userDefaults.set("", forKey:UD_billAmt)
-                  billField.text = ""
+                  billField1.text = ""
             }
         }
         
@@ -108,7 +114,7 @@ class ViewController: UIViewController
         {
             billAmt = userDefaults.value(forKey:UD_billAmt) as! String
             print("ViewWillAppear_60 saved billAmt:", (billAmt) )
-            billField.text = billAmt
+            billField1.text = billAmt
         }
         
 //      let tip_from_Settings: String = ""
@@ -153,6 +159,14 @@ class ViewController: UIViewController
             print("SettingsCntlr VVA_60:", saveDate, now, secsElapse)
         }
         
+//        let bf_fr: Bool = billField1.becomeFirstResponder(
+//        )
+//        if (bf_fr) {
+//            print("mainVC26: BF 1 resp ok")
+//        } else {
+//            print("mainVC28: BF 1 resp nogo")
+//        }
+        
         //        imageView1.animatew
         imageView1.startAnimating()
         
@@ -168,7 +182,7 @@ class ViewController: UIViewController
         let tipPercentages =
             [ 0.1, 0.125, 0.15, 0.175,0.2, 0.225, 0.25 ]
         
-        let bill = Double(billField.text!) ?? 0
+        let bill = Double(billField1.text!) ?? 0
         let  tip = bill * (tipPercentages[tipControl.selectedSegmentIndex]);
         let total = bill + tip
         
@@ -196,7 +210,7 @@ class ViewController: UIViewController
     @IBAction func save_tip_Amount(_ sender: Any)
     {
         let userDefaults = Foundation.UserDefaults.standard
-        userDefaults.set(billField.text, forKey:UD_billAmt)
+        userDefaults.set(billField1.text, forKey:UD_billAmt)
         let now: Date = Foundation.Date()
         userDefaults.set(now, forKey:UD_saveDate)
     }
@@ -205,13 +219,13 @@ class ViewController: UIViewController
     {
         let now: Date = Foundation.Date()
         let userDefaults = Foundation.UserDefaults.standard
-        userDefaults.set(billField.text, forKey:"billAmount")
+        userDefaults.set(billField1.text, forKey:"billAmount")
         userDefaults.set(now, forKey:UD_saveDate)
         
         let tipPercentages =
              [ 0.1, 0.125, 0.15, 0.175,0.2, 0.225, 0.25 ]
 
-        let bill = Double(billField.text!) ?? 0
+        let bill = Double(billField1.text!) ?? 0
         let  tip = bill * (tipPercentages[tipControl.selectedSegmentIndex]);
         let total = bill + tip
         
