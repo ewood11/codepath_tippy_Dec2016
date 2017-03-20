@@ -14,6 +14,17 @@ class SettingsViewController:
 {
     let themesVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ThirdVC") as! ThemesController
     
+    var tipThemeDelegate: passTipThemeDelegate?
+
+    var themes2set_B: Bool = false
+    
+    
+    @IBAction func ToTipCal(_ sender: UIButton)
+    {
+        dismiss(animated: true, completion: nil)
+        tipThemeDelegate?.passTipTheme(lightDark: themes2set_B)
+    }
+    
     @IBOutlet weak var myLabel: UILabel!
     @IBOutlet weak var picker1: UIPickerView!
      var picker_percent: [String] = [String]()
@@ -41,9 +52,9 @@ class SettingsViewController:
     
     var  picker2_data: [String] = ["en_UK", "en_US", "es_US", "fr_FR", "it_IT", "zh_Hans_CN", "zh_Hans_HK"]
 
-    var themes2set_B: Bool = false
-
+    
     @IBAction func To_Themes(_ sender: UIButton) {
+
         self.present(themesVC, animated: true, completion: nil)
     }
 
@@ -231,3 +242,7 @@ class SettingsViewController:
     }
     
   }
+
+protocol passTipThemeDelegate {
+    func passTipTheme(lightDark: Bool)
+}

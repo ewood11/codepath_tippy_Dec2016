@@ -8,8 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController
+class ViewController: UIViewController, passTipThemeDelegate
 {
+    let settingsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SecondVC") as! SettingsViewController
+    
     let locale_identifiers = ["en_UK", "en_US", "es_US", "fr_FR", "it_IT", "zh_Hans_CN", "zh_Hans_HK"]
     
     var locale_dict: [String: Locale ] = ["en_UK": Locale.current, "en_US": Locale.current, "es_US": Locale.current, "fr_FR": Locale.current, "it_IT": Locale.current, "zh_Hans_CN": Locale.current, "zh_Hans_HK": Locale.current ]
@@ -33,6 +35,8 @@ class ViewController: UIViewController
     @IBOutlet weak var SavedTipDef_Label: UILabel!
     @IBOutlet weak var SavedLocale_Label: UILabel!
     
+    var retn_theme2set_B: Bool = false
+    
 //    @IBAction func billResetButton(_ sender: Any)
 //    {
 //        let userDefaults = Foundation.UserDefaults.standard
@@ -41,11 +45,18 @@ class ViewController: UIViewController
 //        view.endEditing(false)
 //    }
     
+    
+    @IBAction func ToSettings(_ sender: UIButton) {
+
+        self.present(settingsVC, animated: true, completion: nil)
+    }
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        settingsVC.tipThemeDelegate = self
         
-        for (i, e) in (locale_identifiers.enumerated()) {
+        for (_, e) in (locale_identifiers.enumerated()) {
             let locale: Locale = Locale.init(identifier: e)
            locale_dict[e] = locale
            let currencySymbol = locale.currencySymbol
@@ -167,6 +178,38 @@ class ViewController: UIViewController
 //            print("mainVC28: BF 1 resp nogo")
 //        }
         
+        if (retn_theme2set_B)
+        {
+          self.view.backgroundColor = UIColor.lightGray
+          billField1.backgroundColor = UIColor.lightGray
+          billField1.textColor = UIColor.yellow
+          tipLabel.backgroundColor = UIColor.lightGray
+          tipLabel.textColor = UIColor.yellow
+          totalLabel.backgroundColor = UIColor.lightGray
+          totalLabel.textColor = UIColor.yellow
+          tipControl.backgroundColor = UIColor.lightGray
+        
+          SavedTipDef_Label.backgroundColor = UIColor.lightGray
+          SavedTipDef_Label.textColor = UIColor.yellow
+          SavedLocale_Label.backgroundColor = UIColor.lightGray
+          SavedLocale_Label.textColor = UIColor.yellow
+        } else {
+            self.view.backgroundColor = UIColor.white
+            billField1.backgroundColor = UIColor.white
+            billField1.textColor = UIColor.black
+            tipLabel.backgroundColor = UIColor.white
+            tipLabel.textColor = UIColor.black
+            totalLabel.backgroundColor = UIColor.white
+            totalLabel.textColor = UIColor.black
+            tipControl.backgroundColor = UIColor.white
+            
+            SavedTipDef_Label.backgroundColor = UIColor.white
+            SavedTipDef_Label.textColor = UIColor.black
+            SavedLocale_Label.backgroundColor = UIColor.white
+            SavedLocale_Label.textColor = UIColor.black
+        }
+        
+        
         //        imageView1.animatew
         imageView1.startAnimating()
         
@@ -249,21 +292,10 @@ class ViewController: UIViewController
         { print(log!)   }
     }
     
-    
-    
-//    func currencySymbol_wholeName(forLocale locale:
-//        Locale = Locale.currentLocale()) -> String
-//    {
-//          var identifier : String = locale.localeIdentifier
-//          switch(identifier) {
-//          case "en_UK":
-//              return "Pounds"
-//          case "en_US":
-//              return "Dollar"
-//          default:
-//              return ""
-//          }
-//    }
+    func passTipTheme(lightDark: Bool) {
+        retn_theme2set_B = lightDark
+        print("VC2=>VC1_return_TipTheme=[", retn_theme2set_B, "]")
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
