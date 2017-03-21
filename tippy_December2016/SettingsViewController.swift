@@ -15,9 +15,7 @@ class SettingsViewController:
     let themesVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ThirdVC") as! ThemesController
     
     var tipThemeDelegate: passTipThemeDelegate?
-
     var themes2set_B: Bool = false
-    
     
     @IBAction func ToTipCal(_ sender: UIButton)
     {
@@ -44,7 +42,7 @@ class SettingsViewController:
     let UD_tipPCent  : String = "UD_tip_PC_save"
     let UD_app_locale: String = "UD_Locale_save"
     
-    @IBOutlet weak var picker2: UIPickerView!
+//  @IBOutlet weak var picker2: UIPickerView!
     @IBOutlet weak var locale_Sel_Label: UILabel!
     
     @IBOutlet weak var Tip_Hdr_Label: UILabel!
@@ -54,7 +52,6 @@ class SettingsViewController:
 
     
     @IBAction func To_Themes(_ sender: UIButton) {
-
         self.present(themesVC, animated: true, completion: nil)
     }
 
@@ -117,8 +114,6 @@ class SettingsViewController:
            picker_Sel_Label.textColor = UIColor.black
            locale_Sel_Label.textColor = UIColor.black
         }
-        
-        
     }
     
     @IBAction func default_Save_Label(_ sender: Any)
@@ -130,38 +125,47 @@ class SettingsViewController:
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+        return 2
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if (pickerView.tag == 1) {
             return picker_Data.count
-        } else {
+        } else  if (pickerView.tag == 2){
             return picker2_data.count
         }
+        return 0
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if (pickerView.tag == 1) {
+        if (component == 0) {
             return picker_Data[row]
-        } else {
+        } else if (component == 1) {
             return picker2_data[row]
         }
+ //       if (pickerView.tag == 1) {
+ //           return picker_Data[row]
+ //       } else {
+ //           return picker2_data[row]
+ //       }
+        return ""
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let userDefaults = Foundation.UserDefaults.standard
-        if (pickerView.tag == 1) {
+//      if (pickerView.tag == 1)
+        if (component == 0) {
            picker_Sel_Label.text = picker_percent[row]
            tip_selected = picker_Sel_Label.text!
            userDefaults.set(picker_percent[row],
               forKey: UD_tipPCent )
-        }  else {
+        }  else if (component == 1) {
             locale_Sel_Label.text = picker2_data[row]
             locale_selected = locale_Sel_Label.text!
             userDefaults.set(picker2_data[row],
               forKey: UD_app_locale )
         }
+    
     }
   
     override func unwind(for unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController)
@@ -175,36 +179,39 @@ class SettingsViewController:
     }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        if (pickerView.tag == 1) {
+//        if (pickerView.tag == 1) {
+        if (component == 0) {
     	    let titleData1 = picker_Data[row]
-    	    let myTitle1 = NSAttributedString(string: titleData1, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 26.0)!,NSForegroundColorAttributeName:UIColor.blue])
+    	    let myTitle1 = NSAttributedString(string: titleData1, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 22.0)!,NSForegroundColorAttributeName:UIColor.blue])
     	    return myTitle1
-        } else {
+        } else if (component == 1) {
             let titleData2 = picker2_data[row]
-            let myTitle2 = NSAttributedString(string: titleData2, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 26.0)!,NSForegroundColorAttributeName:UIColor.blue])
+            let myTitle2 = NSAttributedString(string: titleData2, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 22.0)!,NSForegroundColorAttributeName:UIColor.blue])
             return myTitle2
         }
+        return NSAttributedString(
+         string: "", attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 22.0)!,NSForegroundColorAttributeName:UIColor.blue])
     }
     
     	/* better memory management version */
     	    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView
             {
     	        var pickerLabel = view as! UILabel!
-                if (pickerView.tag == 1)
+//              if (pickerView.tag == 1)
+                if (component == 0)
                 {
                    let pickerLabel1 = UILabel()
     	           if view == nil {  //if no label there yet
-    	            
     	               //color the label's background
                        let hue = CGFloat(row) / CGFloat(picker_Data.count)
     	               pickerLabel1.backgroundColor = UIColor(hue: hue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
     	            }
     	            let titleData = picker_Data[row]
-    	            let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 26.0)!,NSForegroundColorAttributeName:UIColor.black])
+    	            let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 22.0)!,NSForegroundColorAttributeName:UIColor.black])
     	            pickerLabel1.attributedText = myTitle
     	            pickerLabel1.textAlignment = .center
                     pickerLabel = pickerLabel1
-                } else {
+                } else if (component == 1) {
                     let pickerLabel2 = UILabel()
                     if view == nil {  //if no label there yet
                         //color the label's background
@@ -212,7 +219,7 @@ class SettingsViewController:
                         pickerLabel2.backgroundColor = UIColor(hue: hue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
                     }
                     let titleData = picker2_data[row]
-                    let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 26.0)!,NSForegroundColorAttributeName:UIColor.black])
+                    let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 22.0)!,NSForegroundColorAttributeName:UIColor.black])
                     pickerLabel2.attributedText = myTitle
                     pickerLabel2.textAlignment = .center
                     pickerLabel = pickerLabel2
@@ -221,12 +228,12 @@ class SettingsViewController:
     	    }
     
     	    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-    	        return 36.0
+    	        return 40.0
     	    }
     	    // for best use with multitasking , dont use a constant here.
     	    //this is for demonstration purposes only.
     	    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
-    	        return 200
+    	        return 145
     	    }
 
     func passSettingsTheme(lightDark: Bool)

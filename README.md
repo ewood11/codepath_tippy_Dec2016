@@ -1,21 +1,24 @@
 # Pre-work - *ToDo App*
 
-**ToDo App** is an android app that allows building a todo list and basic todo items management functionality including adding new items, editing and deleting an existing item.
+**tippy_Dec2016  App** is an iOS app that does tipCalculator functionality including light/dark theme, common currencies.
 
 Submitted by: **Eddie Wood**   linkedin.com/in/eddiecwood
 
-Time spent: **24** hours spent in total
+Time spent: **96** hours spent in total
 
 ## User Stories
 
 The following **required** functionality is completed:
 
 * [x] User can **successfully multi segment tip control specify tip ** from the todo list
-* [x] User can **successfully calculate tip amount ** from todo list.
-* [x] User can **navigate to Settings view specify/save default tip % and show on restart
+* [x] User can **successfully calculate tip amount ** from basic tip calculator.
 
 The following **optional** features are implemented:
-
+* [*] Remember bill amount upon app restart for 10 minutes, after that bill amount is cleared
+* [*] Use locale specific currency and currency thousands separator
+* [*] Added a light/dark theme. View will appear shows theme per light/dark settings
+* [*] Keyboard visiable when app starts to begin use soft keyboard enter bill amount
+* [x] Added animation to tip calculator UI
 
 The following **additional** features are implemented:
 
@@ -24,13 +27,15 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src=‘./tippy_Dec2016_170319Z.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src=‘./tippy_Dec2016_170320A.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
 Describe any challenges encountered while building the app.
+1. Change from VC seque to delegate
+2. Pickerview NsAttribute color/layout: need more experience in UI design look/feel
 
 ## License
 

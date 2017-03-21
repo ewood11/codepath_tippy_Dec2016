@@ -215,14 +215,6 @@
                                     <outlet property="delegate" destination="ORK-le-toY" id="dsu-cT-zmS"/>
                                 </connections>
                             </pickerView>
-                            <pickerView tag="2" contentMode="scaleToFill" misplaced="YES" id="q9a-Pq-FeA">
-                                <rect key="frame" x="32" y="366" width="288" height="182"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="ORK-le-toY" id="9NX-YG-aic"/>
-                                    <outlet property="delegate" destination="ORK-le-toY" id="Snh-4V-dJF"/>
-                                </connections>
-                            </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="SAB-vT-dZC">
                                 <rect key="frame" x="32" y="31" width="44" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -259,7 +251,6 @@
                         <outlet property="Tip_Hdr_Label" destination="9Kg-Lh-wGO" id="aTh-jj-oEb"/>
                         <outlet property="locale_Sel_Label" destination="DJM-NG-NEg" id="Z3d-Fl-GMC"/>
                         <outlet property="picker1" destination="ywZ-MF-iyL" id="dWi-hT-jCg"/>
-                        <outlet property="picker2" destination="q9a-Pq-FeA" id="tnf-Rq-LIt"/>
                         <outlet property="picker_Sel_Label" destination="Cwr-FZ-KAb" id="6eq-kW-L0b"/>
                     </connections>
                 </viewController>
