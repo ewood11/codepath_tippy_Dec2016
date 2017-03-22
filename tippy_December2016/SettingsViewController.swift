@@ -9,13 +9,14 @@
 import UIKit
 
 class SettingsViewController:
-          UIViewController,UIPickerViewDataSource, UIPickerViewDelegate,
-    passSettingsThemeDelegate
+          UIViewController,UIPickerViewDataSource,UIPickerViewDelegate
 {
-    let themesVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ThirdVC") as! ThemesController
-    
+    let THEME_DARK  = "Calculator Theme: Dark"
+    let THEME_LIGHT = "Calculator Theme: Light"
     var tipThemeDelegate: passTipThemeDelegate?
     var themes2set_B: Bool = false
+    
+    @IBOutlet weak var LD_Theme_switch: UISwitch!
     
     @IBAction func ToTipCal(_ sender: UIButton)
     {
@@ -23,6 +24,7 @@ class SettingsViewController:
         tipThemeDelegate?.passTipTheme(lightDark: themes2set_B)
     }
     
+    @IBOutlet weak var theme_switch_label: UILabel!
     @IBOutlet weak var myLabel: UILabel!
     @IBOutlet weak var picker1: UIPickerView!
      var picker_percent: [String] = [String]()
@@ -50,15 +52,23 @@ class SettingsViewController:
     
     var  picker2_data: [String] = ["en_UK", "en_US", "es_US", "fr_FR", "it_IT", "zh_Hans_CN", "zh_Hans_HK"]
 
-    
-    @IBAction func To_Themes(_ sender: UIButton) {
-        self.present(themesVC, animated: true, completion: nil)
+    @IBAction func LD_ThemeSwitchPressed(_ sender: UISwitch)
+    {
+        if (sender.isOn) {
+           themes2set_B = true
+           theme_switch_label.text = THEME_DARK
+           settings_Theme_dark()
+        } else {
+           themes2set_B = false
+           theme_switch_label.text = THEME_LIGHT
+           settings_Theme_light()
+        }
     }
-
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        themesVC.delegate = self
+
         picker_percent =
             [ "10",
               "12.5",
@@ -67,6 +77,12 @@ class SettingsViewController:
               "20",
               "22.5",
               "25"   ]
+        
+        if (themes2set_B) {
+           theme_switch_label.text = THEME_DARK
+        } else {
+           theme_switch_label.text = THEME_LIGHT
+        }
         
         let userDefaults = Foundation.UserDefaults.standard
         picker_Sel_Label.text = ""
@@ -92,27 +108,34 @@ class SettingsViewController:
         }
     }
     
+    func settings_Theme_dark() {
+        self.view.backgroundColor = UIColor.lightGray
+        
+        picker1.backgroundColor = UIColor.lightGray
+        Tip_Hdr_Label.textColor =
+            UIColor.init(red: 255.0, green: 0.0, blue: 230.0, alpha: 1)
+        Locale_Hdr_Label.textColor =
+            UIColor.init(red: 255.0, green: 0.0, blue: 230.0, alpha: 1)
+        picker_Sel_Label.textColor =
+            UIColor.init(red: 255.0, green: 0.0, blue: 230.0, alpha: 1)
+        locale_Sel_Label.textColor =
+            UIColor.init(red: 255.0, green: 0.0, blue: 230.0,  alpha: 1)
+    }
+    func settings_Theme_light() {
+        self.view.backgroundColor = UIColor.white
+        picker1.backgroundColor = self.view.backgroundColor
+        Tip_Hdr_Label.textColor    = UIColor.black
+        Locale_Hdr_Label.textColor = UIColor.black
+        picker_Sel_Label.textColor = UIColor.black
+        locale_Sel_Label.textColor = UIColor.black
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         if (themes2set_B) {
-           self.view.backgroundColor = UIColor.lightGray
-            
-           picker1.backgroundColor = UIColor.lightGray
-           Tip_Hdr_Label.textColor =
-              UIColor.init(red: 255.0, green: 0.0, blue: 230.0, alpha: 1)
-           Locale_Hdr_Label.textColor =
-              UIColor.init(red: 255.0, green: 0.0, blue: 230.0, alpha: 1)
-           picker_Sel_Label.textColor =
-              UIColor.init(red: 255.0, green: 0.0, blue: 230.0, alpha: 1)
-           locale_Sel_Label.textColor =
-              UIColor.init(red: 255.0, green: 0.0, blue: 230.0,  alpha: 1)
+           settings_Theme_dark()
         } else {
-           self.view.backgroundColor = UIColor.white
-           picker1.backgroundColor = self.view.backgroundColor
-           Tip_Hdr_Label.textColor    = UIColor.black
-           Locale_Hdr_Label.textColor = UIColor.black
-           picker_Sel_Label.textColor = UIColor.black
-           locale_Sel_Label.textColor = UIColor.black
+           settings_Theme_light()
         }
     }
     
@@ -143,17 +166,11 @@ class SettingsViewController:
         } else if (component == 1) {
             return picker2_data[row]
         }
- //       if (pickerView.tag == 1) {
- //           return picker_Data[row]
- //       } else {
- //           return picker2_data[row]
- //       }
         return ""
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let userDefaults = Foundation.UserDefaults.standard
-//      if (pickerView.tag == 1)
         if (component == 0) {
            picker_Sel_Label.text = picker_percent[row]
            tip_selected = picker_Sel_Label.text!
@@ -197,7 +214,6 @@ class SettingsViewController:
     	    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView
             {
     	        var pickerLabel = view as! UILabel!
-//              if (pickerView.tag == 1)
                 if (component == 0)
                 {
                    let pickerLabel1 = UILabel()
@@ -230,8 +246,7 @@ class SettingsViewController:
     	    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
     	        return 40.0
     	    }
-    	    // for best use with multitasking , dont use a constant here.
-    	    //this is for demonstration purposes only.
+
     	    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
     	        return 145
     	    }

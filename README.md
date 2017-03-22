@@ -4,7 +4,7 @@
 
 Submitted by: **Eddie Wood**   linkedin.com/in/eddiecwood
 
-Time spent: **96** hours spent in total
+Time spent: **102** hours spent in total
 
 ## User Stories
 
@@ -17,7 +17,7 @@ The following **optional** features are implemented:
 * [*] Remember bill amount upon app restart for 10 minutes, after that bill amount is cleared
 * [*] Use locale specific currency and currency thousands separator
 * [*] Added a light/dark theme. View will appear shows theme per light/dark settings
-* [*] Keyboard visiable when app starts to begin use soft keyboard enter bill amount
+* [*] Keyboard visible when app starts to begin enter bill amount
 * [x] Added animation to tip calculator UI
 
 The following **additional** features are implemented:
@@ -27,7 +27,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src=‘./tippy_Dec2016_170320A.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src=‘./tippy_Dec2016_170321A.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
